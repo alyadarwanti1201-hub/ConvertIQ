@@ -1,0 +1,61 @@
+{
+  "threshold": 0.4299999999999998,
+  "best_params": {
+    "clf__learning_rate": 0.05,
+    "clf__max_depth": 3,
+    "clf__n_estimators": 200
+  },
+  "features": [
+    "Administrative",
+    "Administrative_Duration",
+    "Informational",
+    "Informational_Duration",
+    "ProductRelated",
+    "ProductRelated_Duration",
+    "BounceRates",
+    "ExitRates",
+    "PageValues",
+    "SpecialDay",
+    "Weekend",
+    "TotalPages",
+    "TotalDuration",
+    "ProductPageRatio",
+    "AvgProductDuration",
+    "Month",
+    "VisitorType",
+    "OperatingSystems",
+    "Browser",
+    "Region",
+    "TrafficType"
+  ],
+  "results": {
+    "Logistic Regression": {
+      "Accuracy": 0.8439164276935682,
+      "Precision": 0.5008130081300813,
+      "Recall": 0.806282722513089,
+      "F1": 0.6178535606820461,
+      "ROC_AUC": 0.9111028329209777
+    },
+    "Random Forest": {
+      "Accuracy": 0.8955346169602622,
+      "Precision": 0.7509881422924901,
+      "Recall": 0.4973821989528796,
+      "F1": 0.5984251968503937,
+      "ROC_AUC": 0.922943328866501
+    },
+    "Gradient Boosting": {
+      "Accuracy": 0.9004506349856616,
+      "Precision": 0.7050147492625368,
+      "Recall": 0.6256544502617801,
+      "F1": 0.6629680998613038,
+      "ROC_AUC": 0.9362808917051687
+    },
+    "Gradient Boosting (Tuned)": {
+      "Accuracy": 0.902498975829578,
+      "Precision": 0.6875,
+      "Recall": 0.6910994764397905,
+      "F1": 0.6892950391644909,
+      "ROC_AUC": 0.9366216254014428
+    }
+  }
+}
