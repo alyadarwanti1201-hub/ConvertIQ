@@ -134,7 +134,7 @@ Python, pandas, NumPy, scikit-learn 1.6.1, matplotlib, joblib, Streamlit.
 |Raditya Aji Respati Juminar|
 |Najwa Aulia Syahrani|
 |Alya Darmawanti Armunanto|
-|Nagita Nur Febrina|
+|Nagita Nur Febrina|  
 
 ---
 
