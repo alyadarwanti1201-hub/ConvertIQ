@@ -17,7 +17,7 @@ Pada e-commerce, mayoritas pengunjung hanya melihat-lihat tanpa membeli. Pada da
 
 | Item | Keterangan |
 |---|---|
-| Sumber | https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset? (`online_shoppers_intention.csv`) |
+| Sumber | https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset (`online_shoppers_intention.csv`) |
 | Data mentah | 12.330 baris, 18 kolom |
 | Setelah pembersihan | **12.205 baris** (125 baris duplikat dihapus), berkas `convertiq_dashboard_data.csv` |
 | Missing value | Tidak ada |
@@ -154,10 +154,10 @@ Python, pandas, NumPy, scikit-learn 1.6.1, matplotlib, joblib, Streamlit.
 
 | Nama |
 |---|
-| _(Raditya Aji Respati Juminar)_ |
-| _(Najwa Aulia Syahrani)_ |
-| _(Alya Darmawanti Armunanto)_ |
-| _(Nagita Nur Febrina)_ |
+| _Raditya Aji Respati Juminar_ |
+| _Najwa Aulia Syahrani_ |
+| _Alya Darmawanti Armunanto_ |
+| _Nagita Nur Febrina_ |
 
 ---
 
