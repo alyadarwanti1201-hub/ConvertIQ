@@ -1,61 +1,187 @@
 {
-  "threshold": 0.4299999999999998,
+  "sklearn_version": "1.6.1",
+  "threshold": 0.5,
   "best_params": {
-    "clf__learning_rate": 0.05,
-    "clf__max_depth": 3,
-    "clf__n_estimators": 200
+    "classifier__C": 1,
+    "classifier__solver": "lbfgs"
   },
-  "features": [
-    "Administrative",
-    "Administrative_Duration",
-    "Informational",
-    "Informational_Duration",
-    "ProductRelated",
-    "ProductRelated_Duration",
-    "BounceRates",
-    "ExitRates",
-    "PageValues",
-    "SpecialDay",
-    "Weekend",
-    "TotalPages",
-    "TotalDuration",
-    "ProductPageRatio",
-    "AvgProductDuration",
-    "Month",
-    "VisitorType",
-    "OperatingSystems",
-    "Browser",
-    "Region",
-    "TrafficType"
-  ],
-  "results": {
+  "n_train": 9764,
+  "n_test": 2441,
+  "cv_table": {
     "Logistic Regression": {
-      "Accuracy": 0.8439164276935682,
-      "Precision": 0.5008130081300813,
-      "Recall": 0.806282722513089,
-      "F1": 0.6178535606820461,
-      "ROC_AUC": 0.9111028329209777
+      "accuracy": 0.8431993024602754,
+      "precision": 0.47880996609169985,
+      "recall": 0.03210971820422158,
+      "f1": 0.06011878211970648,
+      "roc_auc": 0.7439415491350299
+    },
+    "Decision Tree": {
+      "accuracy": 0.7642359274928021,
+      "precision": 0.26063926012768146,
+      "recall": 0.2752276867030966,
+      "f1": 0.26730931130754254,
+      "roc_auc": 0.5650235644684952
     },
     "Random Forest": {
-      "Accuracy": 0.8955346169602622,
-      "Precision": 0.7509881422924901,
-      "Recall": 0.4973821989528796,
-      "F1": 0.5984251968503937,
-      "ROC_AUC": 0.922943328866501
+      "accuracy": 0.8464769941997599,
+      "precision": 0.5640516457537734,
+      "recall": 0.07470909675345548,
+      "f1": 0.13172626176299423,
+      "roc_auc": 0.7615655087612478
     },
-    "Gradient Boosting": {
-      "Accuracy": 0.9004506349856616,
-      "Precision": 0.7050147492625368,
-      "Recall": 0.6256544502617801,
-      "F1": 0.6629680998613038,
-      "ROC_AUC": 0.9362808917051687
+    "Logistic Regression Balanced": {
+      "accuracy": 0.6419504356475536,
+      "precision": 0.2662810423980942,
+      "recall": 0.733941926497375,
+      "f1": 0.3907166583505985,
+      "roc_auc": 0.7436365243085019
     },
-    "Gradient Boosting (Tuned)": {
-      "Accuracy": 0.902498975829578,
-      "Precision": 0.6875,
-      "Recall": 0.6910994764397905,
-      "F1": 0.6892950391644909,
-      "ROC_AUC": 0.9366216254014428
+    "Decision Tree Balanced": {
+      "accuracy": 0.7743750682010861,
+      "precision": 0.2827690942639246,
+      "recall": 0.29099753562627234,
+      "f1": 0.2866610382932386,
+      "roc_auc": 0.577460675606653
+    },
+    "Random Forest Balanced": {
+      "accuracy": 0.8464770991245079,
+      "precision": 0.5718069764137539,
+      "recall": 0.07339976427729562,
+      "f1": 0.12981650971345043,
+      "roc_auc": 0.7700910698139062
     }
+  },
+  "test": {
+    "accuracy": 0.6476853748463745,
+    "precision": 0.2774674115456238,
+    "recall": 0.7801047120418848,
+    "f1": 0.40934065934065933,
+    "roc_auc": 0.7558604924364747
+  },
+  "confusion": [
+    [
+      1283,
+      776
+    ],
+    [
+      84,
+      298
+    ]
+  ],
+  "thresholds": [
+    {
+      "Threshold": 0.1,
+      "Precision": 0.17904806897366246,
+      "Recall": 0.9934469200524246,
+      "F1": 0.30341238867207043
+    },
+    {
+      "Threshold": 0.15,
+      "Precision": 0.18617283950617283,
+      "Recall": 0.9882044560943644,
+      "F1": 0.3133180968211095
+    },
+    {
+      "Threshold": 0.2,
+      "Precision": 0.19328824141519252,
+      "Recall": 0.9737876802096985,
+      "F1": 0.3225526372910788
+    },
+    {
+      "Threshold": 0.25,
+      "Precision": 0.2029627578568462,
+      "Recall": 0.9606815203145478,
+      "F1": 0.3351240141730483
+    },
+    {
+      "Threshold": 0.3,
+      "Precision": 0.21310252201164007,
+      "Recall": 0.9357798165137615,
+      "F1": 0.34714962926947857
+    },
+    {
+      "Threshold": 0.35,
+      "Precision": 0.22352557836428805,
+      "Recall": 0.8990825688073395,
+      "F1": 0.35803757828810023
+    },
+    {
+      "Threshold": 0.4,
+      "Precision": 0.23758608191373687,
+      "Recall": 0.8591087811271297,
+      "F1": 0.37223168654173766
+    },
+    {
+      "Threshold": 0.45,
+      "Precision": 0.25061475409836065,
+      "Recall": 0.8014416775884666,
+      "F1": 0.3818295348111146
+    },
+    {
+      "Threshold": 0.5,
+      "Precision": 0.2660332541567696,
+      "Recall": 0.7339449541284404,
+      "F1": 0.3905160390516039
+    },
+    {
+      "Threshold": 0.55,
+      "Precision": 0.2805547529615718,
+      "Recall": 0.6363040629095675,
+      "F1": 0.3894124724283136
+    },
+    {
+      "Threshold": 0.6,
+      "Precision": 0.30610743193524653,
+      "Recall": 0.54521625163827,
+      "F1": 0.3920829406220547
+    },
+    {
+      "Threshold": 0.65,
+      "Precision": 0.3252769385699899,
+      "Recall": 0.4233289646133683,
+      "F1": 0.3678815489749431
+    },
+    {
+      "Threshold": 0.7,
+      "Precision": 0.3522975929978118,
+      "Recall": 0.3165137614678899,
+      "F1": 0.3334483948912668
+    },
+    {
+      "Threshold": 0.75,
+      "Precision": 0.39125151883353587,
+      "Recall": 0.21100917431192662,
+      "F1": 0.27415921668795235
+    },
+    {
+      "Threshold": 0.8,
+      "Precision": 0.4340659340659341,
+      "Recall": 0.10353866317169069,
+      "F1": 0.1671957671957672
+    },
+    {
+      "Threshold": 0.85,
+      "Precision": 0.4375,
+      "Recall": 0.03211009174311927,
+      "F1": 0.05982905982905983
+    },
+    {
+      "Threshold": 0.9,
+      "Precision": 0.15384615384615385,
+      "Recall": 0.001310615989515072,
+      "F1": 0.002599090318388564
+    }
+  ],
+  "top_coef": {
+    "num__ExitRates": -1.5102929614980691,
+    "cat__TrafficType_15": -1.3924290718905163,
+    "cat__Browser_13": 1.3178339975178817,
+    "cat__Month_Feb": -1.1944558415827773,
+    "cat__Browser_7": -1.1640917847115653,
+    "cat__Browser_12": 1.1086816457843307,
+    "cat__Browser_3": -0.9269686488316036,
+    "cat__TrafficType_7": 0.7531973697387103,
+    "cat__TrafficType_18": -0.6990423666035198,
+    "cat__TrafficType_20": 0.6229747968175363
   }
 }
