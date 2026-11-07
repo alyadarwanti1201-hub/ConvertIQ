@@ -157,29 +157,55 @@ with tab3:
 # ------------------------------------------------------------ TAB 4
 with tab4:
     st.subheader("Simulasi sesi pengunjung")
-    st.write("Isi perilaku pengunjung, lalu tekan tombol untuk melihat peluang ia membeli.")
+    st.write("Pilih contoh sesi di bawah atau isi sendiri, lalu tekan tombol Prediksi.")
+
+    DEFAULT = {"admin": 2, "admin_d": 60.0, "info": 0, "info_d": 0.0, "prod": 30, "prod_d": 1200.0,
+               "bounce": 0.010, "exit": 0.030, "special": 0.0, "weekend": False, "month": "Nov",
+               "visitor": "Returning_Visitor", "os": 1, "browser": 1, "region": 1, "traffic": 1}
+    PRESETS = {
+        "A": {**DEFAULT, "admin": 3, "admin_d": 80.0, "info": 1, "info_d": 40.0, "prod": 60, "prod_d": 2500.0,
+              "bounce": 0.005, "exit": 0.015, "visitor": "New_Visitor"},
+        "B": {**DEFAULT, "admin": 0, "admin_d": 0.0, "prod": 3, "prod_d": 60.0, "bounce": 0.150,
+              "exit": 0.180, "month": "May"},
+        "C": {**DEFAULT, "admin": 3, "admin_d": 80.0, "info": 1, "info_d": 40.0, "prod": 60, "prod_d": 2500.0,
+              "bounce": 0.100, "exit": 0.150, "visitor": "New_Visitor"},
+        "R": DEFAULT,
+    }
+    for k, v in DEFAULT.items():
+        st.session_state.setdefault(f"in_{k}", v)
+
+    def apply_preset(name):
+        for k, v in PRESETS[name].items():
+            st.session_state[f"in_{k}"] = v
+
+    b1, b2, b3, b4 = st.columns(4)
+    b1.button("Contoh A: berpotensi membeli", on_click=apply_preset, args=("A",), use_container_width=True)
+    b2.button("Contoh B: tidak berpotensi", on_click=apply_preset, args=("B",), use_container_width=True)
+    b3.button("Contoh C: exit rate tinggi", on_click=apply_preset, args=("C",), use_container_width=True)
+    b4.button("Reset nilai bawaan", on_click=apply_preset, args=("R",), use_container_width=True)
+
     c1, c2, c3 = st.columns(3)
     with c1:
-        admin = st.number_input("Halaman Administrative", 0, 30, 2)
-        admin_d = st.number_input("Durasi Administrative (detik)", 0.0, 3500.0, 60.0)
-        info = st.number_input("Halaman Informational", 0, 25, 0)
-        info_d = st.number_input("Durasi Informational (detik)", 0.0, 2500.0, 0.0)
-        prod = st.number_input("Halaman ProductRelated", 0, 720, 30)
-        prod_d = st.number_input("Durasi ProductRelated (detik)", 0.0, 65000.0, 1200.0)
+        admin = st.number_input("Halaman Administrative", 0, 30, key="in_admin")
+        admin_d = st.number_input("Durasi Administrative (detik)", 0.0, 3500.0, key="in_admin_d")
+        info = st.number_input("Halaman Informational", 0, 25, key="in_info")
+        info_d = st.number_input("Durasi Informational (detik)", 0.0, 2500.0, key="in_info_d")
+        prod = st.number_input("Halaman ProductRelated", 0, 720, key="in_prod")
+        prod_d = st.number_input("Durasi ProductRelated (detik)", 0.0, 65000.0, key="in_prod_d")
     with c2:
-        bounce = st.slider("BounceRates", 0.0, 0.2, 0.01, 0.005)
-        exitr = st.slider("ExitRates", 0.0, 0.2, 0.03, 0.005)
-        special = st.select_slider("SpecialDay", [0.0, 0.2, 0.4, 0.6, 0.8, 1.0], 0.0)
-        weekend = st.checkbox("Kunjungan akhir pekan")
+        bounce = st.number_input("BounceRates (0 sampai 0,2)", 0.0, 0.2, step=0.001, format="%.3f", key="in_bounce")
+        exitr = st.number_input("ExitRates (0 sampai 0,2)", 0.0, 0.2, step=0.001, format="%.3f", key="in_exit")
+        special = st.select_slider("SpecialDay", [0.0, 0.2, 0.4, 0.6, 0.8, 1.0], key="in_special")
+        weekend = st.checkbox("Kunjungan akhir pekan", key="in_weekend")
     with c3:
-        month = st.selectbox("Bulan", MONTHS, index=MONTHS.index("Nov"))
-        visitor = st.selectbox("Tipe pengunjung", ["Returning_Visitor", "New_Visitor", "Other"])
-        os_ = st.selectbox("Operating System", sorted(df["OperatingSystems"].unique()))
-        browser = st.selectbox("Browser", sorted(df["Browser"].unique()))
-        region = st.selectbox("Region", sorted(df["Region"].unique()))
-        traffic = st.selectbox("Traffic Type", sorted(df["TrafficType"].unique()))
+        month = st.selectbox("Bulan", MONTHS, key="in_month")
+        visitor = st.selectbox("Tipe pengunjung", ["Returning_Visitor", "New_Visitor", "Other"], key="in_visitor")
+        os_ = st.selectbox("Operating System", sorted(df["OperatingSystems"].unique()), key="in_os")
+        browser = st.selectbox("Browser", sorted(df["Browser"].unique()), key="in_browser")
+        region = st.selectbox("Region", sorted(df["Region"].unique()), key="in_region")
+        traffic = st.selectbox("Traffic Type", sorted(df["TrafficType"].unique()), key="in_traffic")
 
-    if st.button("Prediksi"):
+    if st.button("Prediksi", type="primary"):
         raw = {
             "Administrative": int(admin), "Administrative_Duration": float(admin_d),
             "Informational": int(info), "Informational_Duration": float(info_d),
